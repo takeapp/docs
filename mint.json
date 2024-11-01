@@ -33,12 +33,7 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://takeapp.mintlify.app"
-    },
-    {
-      "name": "Changelog",
+      "name": "Product changelog",
       "icon": "newspaper",
       "url": "https://www.take.app/changelog"
     }

@@ -1,33 +1,36 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: Introduction
+description: 'Welcome to Take App Platform API documentation.'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+Take App is an e-commerce platform designed to make building e-commerce websites and integrating with WhatsApp seamless for merchants. Our API set empowers merchants to create third-party integrations with Take App, enabling custom workflows and automation for their online businesses.
 
-## Welcome
+With the Take App API, you can interact with core features of our platform. Current capabilities include:
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+- **Order Management**: Create and retrieve orders to streamline order processing and tracking.
+- **Inventory Management**: Update and manage product inventory to ensure stock levels are always accurate.
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
 
-## Authentication
+> Our APIs are in an early development stage, with limited coverage at this time. We’re actively working on expanding functionality and welcome your feedback! To share ideas or request new features, visit our feedback portal at [takeapp.link/requests](https://takeapp.link/requests)
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+## Prerequisites
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+To use the Take App Platform API, you’ll need to be subscribed to our **Business Plan**. Follow these steps to get started:
+
+1. **Subscribe to the Business Plan**: Go to **Settings > Billing** in your Take App account to upgrade your plan.
+2. **Obtain Your API Key**: After subscribing, navigate to **Settings > Integrations** to retrieve your **Platform API Key**.
+
+With your API Key in hand, you’re all set to start integrating with the Take App Platform API.​
+
+### Getting Started
+
+All requests to the Take App Platform API require authentication using your API key.
+
+- **Base URL**: `https://take.app/api/platform`
+- **Authentication**: Include your `api_key` as a query parameter in both `GET` and `POST` requests.
+
+#### Example Request
+
+```http
+GET https://take.app/api/platform/me?api_key={your_api_key_here}
 ```
