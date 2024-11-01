@@ -1,47 +1,46 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Take App Platform API",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
-  "favicon": "/favicon.svg",
-  "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+    "$schema": "https://mintlify.com/schema.json",
+    "name": "Take App Platform",
+    "favicon": "/favicon.svg",
+    "colors": {
+        "primary": "#0D9373",
+        "light": "#07C983",
+        "dark": "#0D9373",
+        "anchors": {
+            "from": "#0D9373",
+            "to": "#07C983"
+        }
+    },
+    "topbarLinks": [
+        {
+            "name": "Support",
+            "url": "mailto:help@take.app"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Admin Dashboard",
+        "url": "https://take.app/admin"
+    },
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "api-reference"
+        }
+    ],
+    "anchors": [],
+    "navigation": [
+        {
+            "group": "API Documentation",
+            "pages": [
+                "/api-reference/introduction",
+                "/api-reference/endpoint/me",
+                "/api-reference/endpoint/inventory_get",
+                "/api-reference/endpoint/inventory_post"
+            ]
+        }
+    ],
+    "footerSocials": {
+        "github": "https://github.com/takeapp",
+        "linkedin": "https://www.linkedin.com/company/take-app/"
     }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:help@take.app"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Admin Dashboard",
-    "url": "https://take.app/admin"
-  },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [],
-  "navigation": [
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "github": "https://github.com/takeapp",
-    "linkedin": "https://www.linkedin.com/company/take-app/"
-  }
 }
