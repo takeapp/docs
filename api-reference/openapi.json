@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Take App Platform API",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "description": "Test your API",
     "license": {
       "name": "MIT"
     },
@@ -10,38 +10,27 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "http://take.app/api/platform"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "ApiKeyAuth": [{"type": "apiKey", "in": "query", "name": "api_key"}]
     }
   ],
   "paths": {
-    "/plants": {
+    "/me": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
+        "description": "",
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Get store",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "$ref": "#/components/schemas/Store"
                   }
                 }
               }
