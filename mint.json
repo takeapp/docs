@@ -33,9 +33,9 @@
             "group": "API Documentation",
             "pages": [
                 "/api-reference/introduction",
-                "/api-reference/endpoint/me",
-                "/api-reference/endpoint/inventory_get",
-                "/api-reference/endpoint/inventory_post"
+                "/api-reference/endpoint/get-me",
+                "/api-reference/endpoint/get-inventory",
+                "/api-reference/endpoint/post-inventory"
             ]
         }
     ],
