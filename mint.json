@@ -35,7 +35,10 @@
                 "/api-reference/introduction",
                 "/api-reference/endpoint/get-me",
                 "/api-reference/endpoint/get-inventory",
-                "/api-reference/endpoint/post-inventory"
+                "/api-reference/endpoint/post-inventory",
+                "/api-reference/endpoint/get-orders",
+                "/api-reference/endpoint/post-order",
+                "/api-reference/endpoint/put-order"
             ]
         }
     ],

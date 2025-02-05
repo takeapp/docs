@@ -105,6 +105,107 @@
                     }
                 }
             }
+        },
+        "/orders": {
+            "get": {
+                "description": "Get all orders",
+                "responses": {
+                    "200": {
+                        "description": "Get all orders in the store",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new order",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderInput"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Order created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update order status",
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Order ID"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderEditInput"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Order updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -151,6 +252,131 @@
                     },
                     "message": {
                         "type": "string"
+                    }
+                }
+            },
+            "Customer": {
+                "type": "object",
+                "required": ["name", "phone"],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Customer's name"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "Customer's phone number"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Customer's email address"
+                    }
+                }
+            },
+            "OrderInput": {
+                "type": "object",
+                "required": ["customer", "items", "total_amount"],
+                "properties": {
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "total_amount": {
+                        "type": "string",
+                        "description": "Total amount in human readable money format"
+                    },
+                    "remark": {
+                        "type": "string",
+                        "description": "Additional notes for the order"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItem"
+                        }
+                    }
+                }
+            },
+            "OrderItem": {
+                "type": "object",
+                "required": ["productId"],
+                "properties": {
+                    "productId": {
+                        "type": "string",
+                        "description": "ID of the product"
+                    }
+                }
+            },
+            "OrderStatus": {
+                "type": "string",
+                "enum": [
+                    "ORDER_STATUS_PENDING",
+                    "ORDER_STATUS_CONFIRMED", 
+                    "ORDER_STATUS_CANCELLED"
+                ]
+            },
+            "PaymentStatus": {
+                "type": "string",
+                "enum": [
+                    "PAYMENT_STATUS_PENDING",
+                    "PAYMENT_STATUS_PAID",
+                    "PAYMENT_STATUS_FAILED"
+                ]
+            },
+            "FulfillmentStatus": {
+                "type": "string",
+                "enum": [
+                    "FULFILLMENT_STATUS_PENDING",
+                    "FULFILLMENT_STATUS_FULFILLED",
+                    "FULFILLMENT_STATUS_CANCELLED"
+                ]
+            },
+            "Order": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/OrderStatus"
+                    },
+                    "paymentStatus": {
+                        "$ref": "#/components/schemas/PaymentStatus"
+                    },
+                    "fulfillmentStatus": {
+                        "$ref": "#/components/schemas/FulfillmentStatus"
+                    },
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItem"
+                        }
+                    },
+                    "totalAmount": {
+                        "type": "number",
+                        "description": "Total amount in cents"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "OrderEditInput": {
+                "type": "object",
+                "description": "Input for updating order status",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/OrderStatus"
+                    },
+                    "paymentStatus": {
+                        "$ref": "#/components/schemas/PaymentStatus"
+                    },
+                    "fulfillmentStatus": {
+                        "$ref": "#/components/schemas/FulfillmentStatus"
                     }
                 }
             }
