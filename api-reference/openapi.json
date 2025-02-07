@@ -311,24 +311,29 @@
                 "type": "string",
                 "enum": [
                     "ORDER_STATUS_PENDING",
-                    "ORDER_STATUS_CONFIRMED", 
+                    "ORDER_STATUS_CONFIRMED",
+                    "ORDER_STATUS_FULFILLED",
                     "ORDER_STATUS_CANCELLED"
-                ]
+                ],
+                "description": "Note: ORDER_STATUS_FULFILLED is legacy and should be labeled as 'Completed' in UI"
             },
             "PaymentStatus": {
                 "type": "string",
                 "enum": [
                     "PAYMENT_STATUS_PENDING",
+                    "PAYMENT_STATUS_CONFIRMING",
+                    "PAYMENT_STATUS_PARTIAL",
                     "PAYMENT_STATUS_PAID",
-                    "PAYMENT_STATUS_FAILED"
+                    "PAYMENT_STATUS_REFUNDED"
                 ]
             },
             "FulfillmentStatus": {
                 "type": "string",
                 "enum": [
-                    "FULFILLMENT_STATUS_PENDING",
-                    "FULFILLMENT_STATUS_FULFILLED",
-                    "FULFILLMENT_STATUS_CANCELLED"
+                    "UNFULFILLED",
+                    "READY",
+                    "OUT_FOR_DELIVERY",
+                    "FULFILLED"
                 ]
             },
             "Order": {
