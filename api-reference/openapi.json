@@ -276,10 +276,19 @@
             },
             "OrderInput": {
                 "type": "object",
-                "required": ["customer", "items", "total_amount"],
+                "required": ["customer_name", "customer_phone", "items", "total_amount"],
                 "properties": {
-                    "customer": {
-                        "$ref": "#/components/schemas/Customer"
+                    "customer_name": {
+                        "type": "string",
+                        "description": "Customer's name"
+                    },
+                    "customer_phone": {
+                        "type": "string",
+                        "description": "Customer's phone number"
+                    },
+                    "customer_email": {
+                        "type": "string",
+                        "description": "Customer's email address"
                     },
                     "total_amount": {
                         "type": "string",
