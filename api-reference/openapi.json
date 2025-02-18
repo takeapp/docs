@@ -221,6 +221,14 @@
                     "quantity": {
                         "description": "The quantity of the item",
                         "type": "integer"
+                    },
+                    "price": {
+                        "description": "The price of the item",
+                        "type": "number"
+                    },
+                    "original_price": {
+                        "description": "The original price of the item",
+                        "type": "number"
                     }
                 }
             },
