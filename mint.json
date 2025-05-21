@@ -38,7 +38,8 @@
                 "/api-reference/endpoint/post-inventory",
                 "/api-reference/endpoint/get-orders",
                 "/api-reference/endpoint/post-order",
-                "/api-reference/endpoint/put-order"
+                "/api-reference/endpoint/put-order",
+                "/api-reference/simple-order"
             ]
         }
     ],

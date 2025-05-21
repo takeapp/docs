@@ -206,6 +206,45 @@
                     }
                 }
             }
+        },
+        "/public/stores/{storeAlias}": {
+            "post": {
+                "description": "Create a draft order without authentication",
+                "parameters": [
+                    {
+                        "name": "storeAlias",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Alias of the store"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SimpleOrderInput"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Draft order created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SimpleOrderResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
         }
     },
     "components": {
@@ -403,6 +442,70 @@
                     },
                     "fulfillmentStatus": {
                         "$ref": "#/components/schemas/FulfillmentStatus"
+                    }
+                }
+            },
+            "SimpleOrderOption": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string"
+                    },
+                    "answer": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SimpleOrderItem": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "quantity": {
+                        "type": "integer"
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SimpleOrderOption"
+                        }
+                    }
+                }
+            },
+            "SimpleOrderInput": {
+                "type": "object",
+                "required": ["items"],
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SimpleOrderItem"
+                        }
+                    },
+                    "customer_name": {
+                        "type": "string"
+                    },
+                    "customer_phone": {
+                        "type": "string"
+                    },
+                    "customer_email": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                }
+            },
+            "SimpleOrderResponse": {
+                "type": "object",
+                "properties": {
+                    "checkout_url": {
+                        "type": "string"
+                    },
+                    "order_id": {
+                        "type": "string"
                     }
                 }
             }
