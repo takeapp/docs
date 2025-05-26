@@ -1,4 +1,7 @@
 ---
-title: "Create Simple Order"
+title: "Create or Update Simple Order"
 openapi: post /public/stores/{storeAlias}
 ---
+
+Use this endpoint to create a new draft order or update an existing draft order. When an `order_id` is provided, the items in the request will be appended to the draft order.
+
